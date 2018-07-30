@@ -1,11 +1,16 @@
 ﻿@model IEnumerable<Szkolenie.Models.NazwaKlasy>
 
 @{
-    ViewBag.Title = "Index";
+                /**/
+
+                /**/
+
+                ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
-
+@Styles.Render("https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css")
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -20,20 +25,58 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Imie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nazwisko)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwisko)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Donna Snider</td>
+            <td>Customer Support</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </tfoot>
+</table>
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+               dom: 'Bfrtip',
+                sAjaxSource: '@Url.Action("nazwaKlasies", "nazwaKlasies")',
+                columns: [
+                    { "data": "Imie"},
+                    { "data": "Nazwisko"}
+
+                ]
+            });
+        });
+    </script>}
