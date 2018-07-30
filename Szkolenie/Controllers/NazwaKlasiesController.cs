@@ -17,6 +17,7 @@ namespace Szkolenie.Controllers
         // GET: NazwaKlasies
         public ActionResult Index()
         {
+            // kokokok
             return View(db.NazwaKlasies.ToList());
         }
 
