@@ -24,7 +24,7 @@ namespace Szkolenie.Controllers
         public ActionResult Details(int? id)
         {
             if (id == null)
-            {
+            { // jhjhj
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             NazwaKlasy nazwaKlasy = db.NazwaKlasies.Find(id);
