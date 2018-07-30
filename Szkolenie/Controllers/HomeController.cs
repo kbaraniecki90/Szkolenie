@@ -22,7 +22,7 @@ namespace Szkolenie.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Your contact page 23.";
 
             return View();
         }
