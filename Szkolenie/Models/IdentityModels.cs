@@ -29,5 +29,7 @@ namespace Szkolenie.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Szkolenie.Models.NazwaKlasy> NazwaKlasies { get; set; }
     }
 }
