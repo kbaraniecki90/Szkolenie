@@ -19,7 +19,8 @@ namespace Szkolenie.Controllers
             var nazwaKlasies = db.NazwaKlasies.ToList().Select(a => new
             {
                 Imie = a.Imie,
-                Nazwisko = a.Nazwisko
+                Nazwisko = a.Nazwisko,
+                Address = a.NazwaKlasy
             });
 
             return Json(new { data = nazwaKlasies }, JsonRequestBehavior.AllowGet);
