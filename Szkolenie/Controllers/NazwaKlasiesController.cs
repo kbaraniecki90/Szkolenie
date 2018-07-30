@@ -20,7 +20,7 @@ namespace Szkolenie.Controllers
             {
                 Imie = a.Imie,
                 Nazwisko = a.Nazwisko,
-                Address = a.NazwaKlasy
+                Address = a.Adres
             });
 
             return Json(new { data = nazwaKlasies }, JsonRequestBehavior.AllowGet);
