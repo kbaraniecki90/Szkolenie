@@ -14,6 +14,33 @@ namespace Szkolenie.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        public JsonResult nazwaKlasies()
+        {
+            var nazwaKlasies = db.NazwaKlasies.ToList().Select(a => new
+            {
+                Imie = a.Imie,
+                Nazwisko = a.Nazwisko,
+                Address = a.Adres
+            });
+
+            return Json(new { data = nazwaKlasies }, JsonRequestBehavior.AllowGet);
+        }
+
+        
+         public JsonResult getUsers()
+        {
+            var users = db.Users.ToList().Select(a => new
+            {
+                Name = a.UserName,
+                PhoneNumber = a.PhoneNumber,
+                Id = a.Id
+            });
+
+            return Json(new { data = users }, JsonRequestBehavior.AllowGet);
+
+
+        }
+
         // GET: NazwaKlasies
         public ActionResult Index()
         {
