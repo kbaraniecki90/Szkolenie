@@ -17,7 +17,7 @@ namespace Szkolenie.Controllers
         private ApplicationUserManager _userManager;
 
         public ManageController()
-        {
+        { // Comment
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
