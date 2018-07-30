@@ -26,6 +26,21 @@ namespace Szkolenie.Controllers
             return Json(new { data = nazwaKlasies }, JsonRequestBehavior.AllowGet);
         }
 
+        
+         public JsonResult getUsers()
+        {
+            var users = db.Users.ToList().Select(a => new
+            {
+                Name = a.UserName,
+                PhoneNumber = a.PhoneNumber,
+                Id = a.Id
+            });
+
+            return Json(new { data = users }, JsonRequestBehavior.AllowGet);
+
+
+        }
+
         // GET: NazwaKlasies
         public ActionResult Index()
         {
