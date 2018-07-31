@@ -31,5 +31,7 @@ namespace Szkolenie.Models
         }
 
         public System.Data.Entity.DbSet<Szkolenie.Models.NazwaKlasy> NazwaKlasies { get; set; }
+
+        public System.Data.Entity.DbSet<Szkolenie.Models.Client> Clients { get; set; }
     }
 }

@@ -195,6 +195,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NazwaKlasiesController.cs" />
@@ -208,6 +209,10 @@
     <Compile Include="Migrations\201807301314343_newAdres.cs" />
     <Compile Include="Migrations\201807301314343_newAdres.Designer.cs">
       <DependentUpon>201807301314343_newAdres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807310743559_CientMigration.cs" />
+    <Compile Include="Migrations\201807310743559_CientMigration.Designer.cs">
+      <DependentUpon>201807310743559_CientMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -284,6 +289,11 @@
     <Content Include="Views\NazwaKlasies\Details.cshtml" />
     <Content Include="Views\NazwaKlasies\Edit.cshtml" />
     <Content Include="Views\NazwaKlasies\Index.cshtml" />
+    <Content Include="Views\Clients\Create.cshtml" />
+    <Content Include="Views\Clients\Delete.cshtml" />
+    <Content Include="Views\Clients\Details.cshtml" />
+    <Content Include="Views\Clients\Edit.cshtml" />
+    <Content Include="Views\Clients\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -307,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807301314343_newAdres.resx">
       <DependentUpon>201807301314343_newAdres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807310743559_CientMigration.resx">
+      <DependentUpon>201807310743559_CientMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
