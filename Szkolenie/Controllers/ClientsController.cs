@@ -46,7 +46,7 @@ namespace Szkolenie.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,LastName,Login,Data,ProblemDetails,Email,Phone,FixDetails,FixData,IsFixed")] Client client)
+        public ActionResult Create([Bind(Include = "Id,Name,LastName,Login,Data,ProblemDetails,Email,Phone")] Client client)
         {
             if (ModelState.IsValid)
             {

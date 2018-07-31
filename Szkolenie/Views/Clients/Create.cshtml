@@ -4,13 +4,53 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Zgłoszenie Problemu</h2>
+<hr />
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
+
+    @Html.ValidationSummary()
+
     @Html.AntiForgeryToken()
-    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "" })
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control " } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "" })
+        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Login, htmlAttributes: new { @class = "" })
+        @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "" })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @placeholder = "name@emial.com", @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "" })
+        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @placeholder = "123-456-789", @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProblemDetails, htmlAttributes: new { @class = "" })
+        @Html.ValidationMessageFor(model => model.ProblemDetails, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.ProblemDetails, new { htmlAttributes = new { @placeholder = "Treść", @class = "form-control", @rows = "6" } })
+    </div>
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" class="btn btn-primary" value="Wyślij" class="btn btn-default" />
+    </div>
+    <p>* - Wymagane</p>
+
+    @*
     <div class="form-horizontal">
         <h4>Client</h4>
         <hr />
@@ -103,6 +143,7 @@
             </div>
         </div>
     </div>
+    *@
 }
 
 <div>
