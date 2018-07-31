@@ -30,8 +30,9 @@ namespace Szkolenie.Models
         public int Phone { get; set; }
 
 
-
+        [DataType(DataType.MultilineText)]
         public string FixDetails { get; set; }
+
         public DateTime? FixData { get; set; }
         public bool IsFixed { get; set; }
 
