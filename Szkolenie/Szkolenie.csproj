@@ -202,6 +202,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Encryption.cs" />
     <Compile Include="Migrations\201807301305511_InitialCreate.cs" />
     <Compile Include="Migrations\201807301305511_InitialCreate.Designer.cs">
       <DependentUpon>201807301305511_InitialCreate.cs</DependentUpon>
