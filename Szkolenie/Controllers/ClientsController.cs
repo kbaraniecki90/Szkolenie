@@ -17,6 +17,7 @@ namespace Szkolenie.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Clients
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Clients.ToList());
@@ -88,13 +89,19 @@ namespace Szkolenie.Controllers
                 SmtpClient smtpClient = new SmtpClient();
                 smtpClient.Send(email);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Thanks");
             }
 
             return View(client);
         }
 
+        public ActionResult Thanks()
+        {
+            return View();
+        }
+
         // GET: Clients/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
