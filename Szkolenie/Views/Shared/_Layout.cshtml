@@ -26,6 +26,10 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Nowa Klasa", "Index", "NazwaKlasies")</li>
                     <li>@Html.ActionLink("Zgłoszenie", "create", "Clients")</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Admin", "index", "Clients")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
