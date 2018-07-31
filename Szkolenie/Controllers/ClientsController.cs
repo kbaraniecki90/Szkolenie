@@ -4,8 +4,10 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using Szkolenie.Helpers;
 using Szkolenie.Models;
 
 namespace Szkolenie.Controllers
@@ -21,13 +23,26 @@ namespace Szkolenie.Controllers
         }
 
         // GET: Clients/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Clients.Find(id);
+            string decryptedId;
+            try
+            {
+                decryptedId = Encryption.decrypt(id);
+            }
+            catch (Exception e)
+            {
+                return HttpNotFound();
+            }
+
+            
+            int decryptedIntId = Convert.ToInt32(decryptedId);
+
+            Client client = db.Clients.Find(decryptedIntId);
             if (client == null)
             {
                 return HttpNotFound();
@@ -52,6 +67,27 @@ namespace Szkolenie.Controllers
             {
                 db.Clients.Add(client);
                 db.SaveChanges();
+
+                var lastClientId = client.Id;
+                var encryptedId = Encryption.encrypt(lastClientId.ToString());
+
+                MailMessage email = new MailMessage();
+                email.From = new MailAddress("szkolenie@asystent-unijny.pl");
+
+                MailAddress recipient = new MailAddress(client.Email);
+
+                List<MailAddress> recipients = new List<MailAddress>();
+                recipients.Add(recipient);
+
+                email.To.Add(recipient);
+                email.Subject = "Potwierdzenie rejstracji zgłoszenia";
+                email.Body = "<br>Twój link to: </br> <a href='http://localhost:54655/Clients/Details/" + encryptedId + "'>Kliknij tutaj by zobaczyć zgłoszenie </a>";
+                email.BodyEncoding = System.Text.Encoding.UTF8;
+                email.IsBodyHtml = true;
+
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.Send(email);
+
                 return RedirectToAction("Index");
             }
 
