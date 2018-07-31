@@ -106,6 +106,7 @@ namespace Szkolenie.Controllers
             {
                 return HttpNotFound();
             }
+            client.FixData = DateTime.Now;
             return View(client);
         }
 
@@ -114,7 +115,7 @@ namespace Szkolenie.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,LastName,Login,Data,ProblemDetails,Email,Phone,FixDetails,FixData,IsFixed")] Client client)
+        public ActionResult Edit(Client client)
         {
             if (ModelState.IsValid)
             {
